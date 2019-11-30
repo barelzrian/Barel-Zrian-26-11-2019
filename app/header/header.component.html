@@ -1,0 +1,27 @@
+<nav style="background-color: rgb(45, 136, 226);" class="navbar navbar-expand-lg  navbar-dark ">
+    <a class="navbar-brand" href="#">
+
+        <h3> <img style="width: 40px;height: 40px;" src="https://cdn2.iconfinder.com/data/icons/weather-flat-14/64/weather02-512.png" alt="">Weather App</h3>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+
+
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <div style="margin-right: 10px;" class="btn btn-warning"> <span style="color: rgb(39, 39, 39);padding-right: 10px;">Toggle Theme</span>
+                <mat-slide-toggle (click)="toggleTheme()">Slide Toggle</mat-slide-toggle>
+            </div>
+            <a routerLink='/'><button  style="margin-right: 10px;" mat-raised-button  type="submit">Home</button></a>
+            <a routerLink='/favorites'><button style="margin-right: 10px;" mat-raised-button color="accent" type="basic">Favorites weather</button></a>
+            <a routerLink='/topweather'><button style="margin-right: 10px;" mat-raised-button color="warn" type="submit">Top cities list</button></a>
+
+
+        </form>
+    </div>
+</nav>

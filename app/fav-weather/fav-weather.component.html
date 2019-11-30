@@ -1,0 +1,15 @@
+<h3 style="text-align: center;">Saved Weather Profiles</h3>
+<mat-card style="background-color: rgb(155, 155, 155);" class="example-card" *ngFor="let profile of profiles" style="margin-bottom: 10px;">
+    <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title> {{profile.profileName}}</mat-card-title>
+        <mat-card-subtitle> {{profile.cities.join(', ')}}</mat-card-subtitle>
+        <img style="height: 50px; width: 50px;" mat-card-image src="https://cdn1.iconfinder.com/data/icons/weather-forecast-meteorology-color-1/128/weather-partly-sunny-512.png" alt="Photo of a Shiba Inu">
+
+    </mat-card-header>
+
+    <mat-card-actions>
+        <a><button style="margin-right: 10px;" mat-raised-button color="warn" (click)="onDeleteProfile($event,profile)">Delete Profile</button></a>
+        <a routerLink="/"><button style="margin-right: 10px;" mat-raised-button color="primary" (click)="onLoadProfile(profile)">Load Weather Profile</button></a>
+
+    </mat-card-actions>

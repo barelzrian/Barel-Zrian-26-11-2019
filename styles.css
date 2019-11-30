@@ -1,0 +1,8 @@
+/* You can add global styles to this file, and also import other style files */
+
+body {
+    margin: 0;
+    background-image: linear-gradient( rgba(255, 255, 255, 0.87), rgba(255, 255, 255, 0.5)), url('https://png.pngtree.com/thumb_back/fw800/back_our/20190625/ourmid/pngtree-blue-arc-weather-background-image_253195.jpg');
+    height: 80%;
+    background-size: 100%;
+}

@@ -1,0 +1,15 @@
+<mat-card>
+    <h3>Current Weather</h3>
+    <mat-card class="example-card" *ngFor="let weatherItem of cities" style="margin-bottom: 10px;">
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title> {{weatherItem.LocalizedName}}</mat-card-title>
+            <mat-card-subtitle> Region {{weatherItem.Region.LocalizedName}}</mat-card-subtitle>
+            <img style="height: 50px; width: 50px;" mat-card-image src="https://cdn1.iconfinder.com/data/icons/weather-forecast-meteorology-color-1/128/weather-partly-sunny-512.png" alt="Photo of a Shiba Inu">
+            <p style="padding-left: 10%;">
+                Rank: {{weatherItem.Rank}}
+            </p>
+        </mat-card-header>
+
+
+    </mat-card>

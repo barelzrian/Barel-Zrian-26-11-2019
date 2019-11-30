@@ -1,0 +1,150 @@
+<!--  -->
+<form style="text-align: center;width: 100%; margin: 0 auto;">
+    <div style="background-image: url(/assets/weatherBG.png);height: 40%;background-size: 80%;border-radius: 10px;" class="container-fluid">
+        <br>
+        <img style="height: 50px;width: 50px;" src="https://cdn3.iconfinder.com/data/icons/luchesa-vol-9/128/Weather-512.png" alt="">
+        <h3 style=" padding-top: 15px;color: rgb(29, 100, 207);">Search weather by city name</h3>
+
+        <div style="width: 90%; margin: 0 auto;">
+            <input type="text" placeholder="City" class="form-control" name="cityName" value="2" [(ngModel)]="cityName" (input)="onSearchLocation
+            (input.value)" required #input>
+        </div>
+        <a><button style="width: 45%;" mat-raised-button  (click)="onSubmit(cityName)" (click)="openSnackBarSearch()" matTooltip="Click here to get the current weather" type="submit">Get Weather</button></a>
+        <a><button style="width: 45%;" mat-raised-button color="primary" (click)="onSubmit5days(cityName)"  matTooltip="Click here to get the 5 days forecast!"
+            type="submit">5 days forecast</button></a>
+        <br><br>
+    </div>
+    <div *ngIf="cityName.length > 0">
+        <div style="width: 100%;" class="btn btn-warning">
+            <h3 class="info"> City found: {{data}} </h3>
+        </div>
+
+    </div>
+    <mat-card>
+        <h6 style="color: rgb(32, 154, 236);">⬇ Mark location to get the current weather ⬇</h6>
+        <app-maps></app-maps>
+    </mat-card>
+    <!--  -->
+    <mat-accordion>
+        <mat-expansion-panel style="margin-bottom:10px;padding-top: 15px;padding-bottom: 15px;">
+            <mat-expansion-panel-header>
+                <button style="margin-right: 5%;" color="primary" mat-fab aria-label="Example icon-button with a heart icon">
+                                <mat-icon>favorite</mat-icon>
+                              </button>
+
+                <mat-panel-title style="color: azure;">
+                    <button mat-button color="primary">
+                             
+                               <h5> Favorite Weather - click here    </h5>
+                              </button>
+
+                </mat-panel-title>
+
+            </mat-expansion-panel-header>
+            <!-- fav weather -->
+            <app-fav-weather></app-fav-weather>
+        </mat-expansion-panel>
+
+    </mat-accordion>
+
+    <!--  -->
+
+    <mat-card>
+        <h3>Current Weather</h3>
+        <mat-card class="example-card" *ngFor="let weatherItem of weatherItems" style="margin-bottom: 10px;">
+            <img style="height: 50px; width: 50px;" mat-card-image src="https://cdn1.iconfinder.com/data/icons/weather-forecast-meteorology-color-1/128/weather-partly-sunny-512.png" alt="Photo of a Shiba Inu">
+            <br>
+            <a><button style="margin-right: 10px;" mat-raised-button color="primary" (click)="onSaveNew()" (click)="openSnackBarFav()">❤️ Add to favorites ❤️</button></a>
+            <mat-card-content>
+                <h3 style="color: rgb(27, 120, 182);">{{weatherItem.cityName}}</h3>
+                <hr>
+                <h4>{{weatherItem.description}}</h4>
+                <h3>
+                    {{weatherItem.temperature}}
+                </h3>
+            </mat-card-content>
+            <mat-card-actions>
+
+            </mat-card-actions>
+
+        </mat-card>
+        <!--  -->
+
+        <mat-card class="example-card" style="margin-bottom: 10px;">
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <img mat-card-avatar style="height: 50px; width: 50px;margin-right: 10px;" mat-card-image src="https://cdn1.iconfinder.com/data/icons/weather-forecast-meteorology-color-1/128/weather-partly-sunny-512.png" alt="Photo of a Shiba Inu">
+
+
+                <mat-card-title>
+                    <h4>Current tel aviv Weather</h4> {{telAviv_Forecast?.WeatherText }}</mat-card-title>
+                <mat-card-subtitle> {{telAviv_Forecast?.Temperature.Metric.Value}}{{telAviv_Forecast?.Temperature.Metric.Unit}} </mat-card-subtitle>
+                <p>
+                    {{weatherItem?.temperature}}
+                </p>
+
+
+            </mat-card-header>
+
+
+        </mat-card>
+        <!--  -->
+        <main class="container" style="padding: 0px">
+            <div class="card-wrapper">
+                <section *ngFor="let fiveDaysForecast of fiveDaysForecasts" class="card anim-flip">
+                    <header>
+                        <h1 style="color: blue;">{{fiveDaysForecast.cityName}}</h1>
+                        <h3 style="color: aliceblue;" class="card-header">{{fiveDaysForecast.EpochDate * 1000 | date:fullDate}}</h3>
+                    </header>
+                    <p style="color: aliceblue;font-size: 18px;" class="card-temp box-highlight; ">Min {{((fiveDaysForecast?.Temperature.Minimum.Value - 32) * 5.0/9.0).toFixed(1)}} </p>
+                    <p style="color: aliceblue;font-size: 18px;" class="card-temp box-highlight; ">Max {{((fiveDaysForecast?.Temperature.Maximum.Value - 32) * 5.0/9.0).toFixed(1)}} </p>
+
+
+                    <div class="icon">
+                        <div class="cloud-group">
+                            <span class="icon-cloud cloud-circle shadow-cloud-clip"></span>
+                            <span class="icon-cloud cloud-base shadow-cloud-clip"></span>
+                        </div>
+                    </div>
+
+                    <p style="color: aliceblue;" class="card-info">Day condition {{fiveDaysForecast.Day.IconPhrase}}</p>
+                    <p style="color: aliceblue;" class="card-info">Night condition {{fiveDaysForecast.Night.IconPhrase}}</p>
+
+                </section>
+
+
+
+            </div>
+        </main>
+    </mat-card>
+
+    <!--  -->
+
+    <br><br><br>
+    <!--  -->
+    <!--  -->
+    <br><br><br>
+
+    <br><br><br>
+    <!--  -->
+
+</form>
+
+<br><br><br>
+
+<!--  -->
+
+
+
+<!--  -->
+
+<!--  -->
+
+
+
+<!-- <div *ngFor="let cityBy of cityByName">
+    <h1> key :{{cityBy.Key}} </h1>
+    <p>local name : {{cityBy.LocalizedName}}</p>
+</div> -->
+
+<!--  -->
